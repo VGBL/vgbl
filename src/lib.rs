@@ -1,14 +1,16 @@
-pub fn add(left: u64, right: u64) -> u64 {
-    left + right
-}
+#![cfg_attr(not(test), no_std)]
 
-#[cfg(test)]
-mod tests {
-    use super::*;
+mod bootloader;
+pub mod hal;
 
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
+pub use bootloader::Bootloader;
+
+pub mod image {
+    pub mod header {
+        mod image_header;
+        mod metadata_type;
+
+        pub use image_header::ImageHeader;
+        pub use metadata_type::MetadataType;
     }
 }
