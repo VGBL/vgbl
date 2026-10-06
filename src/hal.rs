@@ -5,8 +5,8 @@ mod watchdog;
 
 pub use clock::Clock;
 pub use execution_context::ExecutionContext;
-pub use flash::{EraseError, Flash, FlashError, Sector, WriteError};
-pub use watchdog::{Watchdog, WatchdogError};
+pub use flash::{EraseError, Flash, FlashError, Region, Sector, Sectors, WriteError};
+pub use watchdog::{NoWatchdog, Watchdog, WatchdogError};
 
 /// The contract between the core bootloader and a chip-specific implementation
 ///

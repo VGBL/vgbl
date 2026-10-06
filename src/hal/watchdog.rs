@@ -12,6 +12,21 @@ pub trait Watchdog {
     fn disable(&mut self) -> Result<(), WatchdogError>;
 }
 
+/// For chips or builds without a watchdog. `enable` fails so the core knows nothing is protecting it
+pub struct NoWatchdog;
+
+impl Watchdog for NoWatchdog {
+    fn feed(&mut self) {}
+
+    fn enable(&mut self) -> Result<(), WatchdogError> {
+        Err(WatchdogError::Unsupported)
+    }
+
+    fn disable(&mut self) -> Result<(), WatchdogError> {
+        Ok(())
+    }
+}
+
 /// Why a watchdog operation failed
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum WatchdogError {

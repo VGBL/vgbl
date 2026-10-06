@@ -1,4 +1,5 @@
 use crate::hal::Hal;
+use crate::hooks::Hooks;
 
 /// The core bootloader
 ///
@@ -18,5 +19,13 @@ impl<H: Hal> Bootloader<H> {
         &mut self.hal
     }
 
-    pub fn poll(&mut self) {}
+    /// Call once before the first `poll`
+    pub fn init(&mut self, hooks: &mut impl Hooks<H>) {
+        hooks.init(self);
+    }
+
+    /// Call from the main loop
+    pub fn poll(&mut self, hooks: &mut impl Hooks<H>) {
+        hooks.poll(self);
+    }
 }
