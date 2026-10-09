@@ -1,8 +1,8 @@
-use crate::image::parse::{
+use crate::segment::parse::{
     ALIGN, DIGEST_LEN, ENTRY_HEADER_LEN, FOOTER_LEN, FOOTER_MAGIC, FOOTER_PREFIX_LEN, FORMAT_MAJOR, FORMAT_MINOR, MAGIC,
     STATIC_LEN, pad,
 };
-use crate::image::{Entry, Header, ParseError};
+use crate::segment::{Entry, Header, ParseError};
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum EncodeError {

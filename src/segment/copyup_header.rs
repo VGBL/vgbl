@@ -1,10 +1,10 @@
-/// Describes where an image is loaded and how to start it
+/// Describes where a segment is loaded and how to start it
 ///
-/// Stored little-endian, immediately before the image payload
+/// Stored little-endian, immediately before the segment data
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(C)]
-pub struct ImageHeader {
+pub struct CopyupHeader {
     /// Address the payload is copied to before execution
     pub load_addr: u32,
 
@@ -15,7 +15,7 @@ pub struct ImageHeader {
     pub vector_table_offset: u32,
 }
 
-impl ImageHeader {
+impl CopyupHeader {
     /// Serialized size in bytes
     pub const SIZE: usize = 12;
 

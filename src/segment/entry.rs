@@ -1,4 +1,4 @@
-use crate::image::ParseError;
+use crate::segment::ParseError;
 use crate::validation::ValidationTriggers;
 
 /// Set on entry kinds a parser must understand. Unknown kinds without it are passed through as

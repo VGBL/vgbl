@@ -25,8 +25,8 @@
         ..  zero padding to a multiple of 16 bytes
 */
 
-use crate::image::entry::{u16_at, u32_at};
-use crate::image::{Entry, EntryKind};
+use crate::segment::entry::{u16_at, u32_at};
+use crate::segment::{Entry, EntryKind};
 
 pub const MAGIC: [u8; 4] = *b"VGBL";
 pub const FOOTER_MAGIC: [u8; 4] = *b"RMFT";

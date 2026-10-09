@@ -7,7 +7,7 @@ mod hooks;
 pub use bootloader::Bootloader;
 pub use hooks::Hooks;
 
-pub mod image {
+pub mod segment {
     mod encode;
     mod entry;
     mod parse;
@@ -20,11 +20,9 @@ pub mod image {
     pub use parse::{Entries, FOOTER_MAGIC, FORMAT_MAJOR, FORMAT_MINOR, Header, MAGIC, ParseError};
 
     /// The fixed header copyup reads until it moves to [`Header`]
-    pub mod header {
-        mod image_header;
+    mod copyup_header;
 
-        pub use image_header::ImageHeader;
-    }
+    pub use copyup_header::CopyupHeader;
 }
 
 pub mod validation {
